@@ -20,12 +20,6 @@ fs.readdirSync(__dirname)
 	db[model.name] = model; // add the entry in the db object
 });
 
-// go through each entry of the db object
-Object.keys(db).forEach((modelName) => {
-	// call the "associate" function on the model object
-	// and pass it the db object (so that it can have access to other models)
-	db[modelName].associate(db);
-});
 
 // sync the DB
 sequelize.sync();

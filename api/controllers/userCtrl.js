@@ -49,15 +49,15 @@ module.exports = {
     },
 
     delete_by_id: (req, res, next) => {
-        return db.Person.findByPk(req.params.person_id)
-        .then(person => {
-            if(!person)
-                throw { status: 404, message: 'Person not found' };
+        return db.User.findByPk(req.params.user_id)
+        .then(user => {
+            if(!user)
+                throw { status: 404, message: 'User not found' };
             else{
-                return person.destroy();
+                return user.destroy();
             }
         })
-        .then(() => res.status(200).send("Person destroyed"))
-        .catch(err => next(err))
+        .then(() => res.status(200).send("User destroyed"))
+        .catch(next)
     }
 };
